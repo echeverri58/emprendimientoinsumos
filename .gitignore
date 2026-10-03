@@ -1,0 +1,19 @@
+# Dependencias
+node_modules/
+
+# Caché de npm (se ubica dentro del proyecto para funcionar en entornos con
+# escritura restringida fuera del directorio de trabajo)
+.npm-cache/
+
+# Artefactos de compilación del cliente
+client/dist/
+
+# Variables de entorno locales (no subir credenciales)
+.env
+.env.local
+
+# Registros y temporales
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
