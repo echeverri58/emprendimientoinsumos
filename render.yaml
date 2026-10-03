@@ -1,0 +1,25 @@
+# Blueprint de despliegue en Render.
+#
+# Render lee este archivo para crear el servicio con un clic:
+#   Dashboard de Render → "New +" → "Blueprint" → elegir este repositorio.
+#
+# Es un servicio web Node de larga vida (no serverless): ejecuta `npm run build`
+# para compilar el cliente y luego `npm start`, que sirve la interfaz y la API
+# en el mismo puerto (Render inyecta la variable PORT).
+services:
+  - type: web
+    name: secop-dotacion-insumos
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      # El app token de Socrata es OPCIONAL pero recomendado (eleva los límites de
+      # peticiones). No lo incluyas aquí: configúralo en el dashboard de Render.
+      - key: SOCRATA_APP_TOKEN
+        sync: false
+      - key: DEFAULT_WINDOW_DAYS
+        value: "30"

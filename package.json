@@ -12,7 +12,7 @@
     "dev:server": "node --watch server/index.js",
     "dev:client": "vite",
     "build": "vite build",
-    "start": "cross-env NODE_ENV=production node server/index.js",
+    "start": "node server/index.js",
     "preview": "npm run build && npm start",
     "check": "node scripts/check-api.mjs",
     "check:web": "node scripts/check-web.mjs",
