@@ -8,10 +8,21 @@
       name="description"
       content="Rastreo y monitoreo de contratos públicos de dotación, vestuario, calzado, insumos y EPP en SECOP II (Datos Abiertos Colombia)."
     />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <title>SECOP II · Dotación, Vestuario, Calzado, Insumos y EPP</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('./sw.js').catch(function () {
+            /* La PWA funciona igual sin el worker; solo pierde instalabilidad/offline. */
+          });
+        });
+      }
+    </script>
   </body>
 </html>
